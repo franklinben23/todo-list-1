@@ -4,7 +4,7 @@
 
 > In this project I created a todo-list which allows you to set your daily tasks, mark them as completed, and delete them.
 
-![Screenshot 2021-12-03 at 18-08-26 To-do list](https://user-images.githubusercontent.com/68623189/144679475-91532cb2-1952-47c4-ae0a-b3136b750b60.png)
+![Screenshot 2022-02-18 at 16-15-46 To-do List](https://user-images.githubusercontent.com/68623189/154755799-876ddabe-2214-42dd-90a9-5b59db513b4e.png)
 
 ## Built With
 
