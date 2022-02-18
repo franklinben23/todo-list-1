@@ -20,3 +20,20 @@ body {
   display: flex;
   position: relative;
 }
+
+.fas {
+  position: absolute;
+}
+
+.fas:hover,
+.remove-bar:hover {
+  cursor: pointer;
+}
+
+.fa-trash-alt {
+  right: 10px;
+}
+
+.fa-edit {
+  right: 40px;
+}
