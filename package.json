@@ -1,0 +1,30 @@
+{
+  "name": "todo-list-1",
+  "version": "1.0.0",
+  "description": "In this project I will create a simple single page web app of an interactive list of tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage --env=jsdom",
+    "build": "webpack",
+    "serve": "webpack serve",
+    "start": "webpack-dev-server --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franklinben23/todo-list-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/franklinben23/todo-list-1/issues"
+  },
+  "homepage": "https://github.com/franklinben23/todo-list-1#readme",
+  "devDependencies": {
+    "css-loader": "^6.6.0",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  }
+}
