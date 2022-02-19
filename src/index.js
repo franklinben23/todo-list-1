@@ -1,14 +1,22 @@
 import './style.css';
-import { setIndex, create, removeElement } from './scripts.js';
+import { updateToTrue, updateToFalse } from './updateStatus.js';
+import {
+  setIndex, clearedList, create, removeElement,
+} from './scripts.js';
 
 const taskList = document.querySelector('.task-list');
 const taskForm = document.getElementById('task-form');
 const taskInput = document.getElementById('form-input');
+const clearList = document.querySelector('.to-rm');
 
-const list = JSON.parse(localStorage.getItem('list')) || [];
+let list = JSON.parse(localStorage.getItem('list')) || [];
 
 const record = () => {
   localStorage.setItem('list', JSON.stringify(list));
+};
+
+const checkedBox = (element) => {
+  element.checked = true;
 };
 
 const render = () => {
@@ -16,6 +24,10 @@ const render = () => {
   list.forEach((task) => {
     const li = document.createElement('li');
     li.classList.add('task');
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.classList.add('checkbox');
 
     const label = document.createElement('label');
     label.classList.add('task-label');
@@ -30,10 +42,29 @@ const render = () => {
 
     label.innerHTML = task.name;
 
+    li.append(checkbox);
     li.append(label);
     li.append(rmIcon);
     li.append(editIcon);
     taskList.appendChild(li);
+
+    if (task.completed === true) {
+      li.classList.add('crossed');
+      checkedBox(checkbox);
+    }
+
+    checkbox.addEventListener('change', (e) => {
+      const taskAtHand = e.target.parentNode;
+      if (e.target.checked === true) {
+        updateToTrue(task);
+        taskAtHand.classList.add('crossed');
+        record();
+      } else {
+        updateToFalse(task);
+        taskAtHand.classList.remove('crossed');
+        record();
+      }
+    });
 
     rmIcon.addEventListener('click', (e) => {
       e.target.parentNode.remove();
@@ -53,6 +84,7 @@ const render = () => {
       label.innerText = '';
       li.removeChild(editIcon);
       li.removeChild(rmIcon);
+      li.removeChild(checkbox);
       li.appendChild(newInput);
       li.appendChild(saveBtn);
       saveBtn.addEventListener('click', () => {
@@ -71,6 +103,13 @@ taskForm.addEventListener('submit', (e) => {
   const task = create(taskName);
   taskInput.value = null;
   list.push(task);
+  setIndex(list);
+  record();
+  render();
+});
+
+clearList.addEventListener('click', () => {
+  list = clearedList(list);
   setIndex(list);
   record();
   render();
