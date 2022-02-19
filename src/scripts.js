@@ -5,6 +5,11 @@ const setIndex = (array) => {
   }
 };
 
+const clearedList = (array) => {
+  const clearedArr = array.filter((object) => object.completed === false);
+  return clearedArr;
+};
+
 const create = (name) => ({ id: 0, name, completed: false });
 
 const removeElement = (element) => {
@@ -25,5 +30,5 @@ const editFunc = (newName) => {
 };
 
 export {
-  setIndex, create, removeElement, deleteTask, editFunc,
+  setIndex, create, removeElement, deleteTask, editFunc, clearedList,
 };
